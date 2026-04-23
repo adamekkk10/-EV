@@ -1,0 +1,92 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:PlusEV.UI.ViewModels"
+             x:Class="PlusEV.UI.Views.SettingsView"
+             x:DataType="vm:SettingsViewModel"
+             Padding="20">
+    <ScrollViewer>
+        <StackPanel Spacing="12" MaxWidth="900">
+            <TextBlock Text="Settings" FontSize="22" FontWeight="SemiBold" Foreground="#E6ECF5" />
+
+            <Border Classes="card">
+                <StackPanel Spacing="10">
+                    <TextBlock Text="Odds API" FontWeight="SemiBold" Foreground="#8793A8" />
+                    <StackPanel Orientation="Horizontal" Spacing="10">
+                        <TextBlock Text="API key" Width="120" VerticalAlignment="Center" />
+                        <TextBox Width="400" PasswordChar="•" Text="{Binding ApiKey}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Spacing="10">
+                        <TextBlock Text="Region" Width="120" VerticalAlignment="Center" />
+                        <TextBox Width="160" Text="{Binding Region}" />
+                        <TextBlock Text="Poll interval (s)" Width="140" VerticalAlignment="Center" />
+                        <NumericUpDown Width="120" Value="{Binding PollIntervalSeconds}" Minimum="10" Maximum="3600" />
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <Border Classes="card">
+                <StackPanel Spacing="10">
+                    <TextBlock Text="EV engine" FontWeight="SemiBold" Foreground="#8793A8" />
+                    <StackPanel Orientation="Horizontal" Spacing="10">
+                        <TextBlock Text="Min EV %" Width="160" VerticalAlignment="Center" />
+                        <Slider Width="200" Minimum="0" Maximum="20" Value="{Binding MinEvPercent}" />
+                        <TextBlock Text="{Binding MinEvPercent, StringFormat='{}{0:F1}%'}" Foreground="#E6ECF5" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Spacing="10">
+                        <TextBlock Text="Min confidence" Width="160" VerticalAlignment="Center" />
+                        <Slider Width="200" Minimum="0" Maximum="100" Value="{Binding MinConfidence}" />
+                        <TextBlock Text="{Binding MinConfidence, StringFormat='{}{0:F0}'}" Foreground="#E6ECF5" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Spacing="10">
+                        <TextBlock Text="Kelly fraction" Width="160" VerticalAlignment="Center" />
+                        <NumericUpDown Width="120" Minimum="0" Maximum="1" Increment="0.05" Value="{Binding KellyFraction}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Spacing="10">
+                        <TextBlock Text="Hard cap (%)" Width="160" VerticalAlignment="Center" />
+                        <NumericUpDown Width="120" Minimum="0" Maximum="20" Increment="0.1" Value="{Binding HardCap}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Spacing="10">
+                        <TextBlock Text="Soft cap × avg" Width="160" VerticalAlignment="Center" />
+                        <NumericUpDown Width="120" Minimum="0" Maximum="50" Increment="0.5" Value="{Binding SoftCapMultiple}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Spacing="10">
+                        <TextBlock Text="Sanity threshold %" Width="160" VerticalAlignment="Center" />
+                        <NumericUpDown Width="120" Minimum="0" Maximum="25" Increment="0.1" Value="{Binding SanityDelta}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Spacing="10">
+                        <TextBlock Text="Devigging method" Width="160" VerticalAlignment="Center" />
+                        <ComboBox SelectedItem="{Binding DevigMethodKey}">
+                            <ComboBoxItem>multiplicative</ComboBoxItem>
+                            <ComboBoxItem>power</ComboBoxItem>
+                            <ComboBoxItem>shin</ComboBoxItem>
+                        </ComboBox>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <Border Classes="card">
+                <StackPanel Spacing="10">
+                    <TextBlock Text="Alerts" FontWeight="SemiBold" Foreground="#8793A8" />
+                    <StackPanel Orientation="Horizontal" Spacing="10">
+                        <TextBlock Text="Telegram bot token" Width="180" VerticalAlignment="Center" />
+                        <TextBox Width="400" PasswordChar="•" Text="{Binding TelegramBotToken}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Spacing="10">
+                        <TextBlock Text="Telegram chat id" Width="180" VerticalAlignment="Center" />
+                        <TextBox Width="200" Text="{Binding TelegramChatId}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Spacing="10">
+                        <TextBlock Text="Discord webhook URL" Width="180" VerticalAlignment="Center" />
+                        <TextBox Width="500" Text="{Binding DiscordWebhookUrl}" />
+                    </StackPanel>
+                    <CheckBox Content="Desktop notifications" IsChecked="{Binding DesktopEnabled}" />
+                </StackPanel>
+            </Border>
+
+            <StackPanel Orientation="Horizontal" Spacing="10">
+                <Button Classes="primary" Content="Save" Command="{Binding SaveCommand}" />
+                <TextBlock Text="{Binding StatusText}" VerticalAlignment="Center" Foreground="#8793A8" />
+            </StackPanel>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

@@ -1,0 +1,43 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:PlusEV.UI.ViewModels"
+             x:Class="PlusEV.UI.Views.RealityCheckView"
+             x:DataType="vm:RealityCheckViewModel"
+             Padding="20">
+    <Grid RowDefinitions="Auto,Auto,Auto,*" RowSpacing="12">
+        <TextBlock Grid.Row="0" Text="Reality check" FontSize="22" FontWeight="SemiBold" Foreground="#E6ECF5" />
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Spacing="10">
+            <ComboBox SelectedItem="{Binding Mode}">
+                <ComboBoxItem>Live</ComboBoxItem>
+                <ComboBoxItem>Demo</ComboBoxItem>
+            </ComboBox>
+            <Button Classes="primary" Content="Refresh" Command="{Binding LoadCommand}" />
+        </StackPanel>
+        <Grid Grid.Row="2" ColumnDefinitions="*,*,*,*" ColumnSpacing="12">
+            <Border Grid.Column="0" Classes="card"><StackPanel>
+                <TextBlock Classes="metric-caption" Text="CLV samples" />
+                <TextBlock Classes="metric" Text="{Binding SampleSize}" />
+            </StackPanel></Border>
+            <Border Grid.Column="1" Classes="card"><StackPanel>
+                <TextBlock Classes="metric-caption" Text="Mean CLV" />
+                <TextBlock Classes="metric" Foreground="#17C666"
+                           Text="{Binding MeanClv, StringFormat='{}{0:P2}'}" />
+            </StackPanel></Border>
+            <Border Grid.Column="2" Classes="card"><StackPanel>
+                <TextBlock Classes="metric-caption" Text="t-statistic" />
+                <TextBlock Classes="metric" Text="{Binding TStatistic, StringFormat='{}{0:F2}'}" />
+            </StackPanel></Border>
+            <Border Grid.Column="3" Classes="card"><StackPanel>
+                <TextBlock Classes="metric-caption" Text="samples needed" />
+                <TextBlock Classes="metric" Text="{Binding RequiredSampleSize}" />
+            </StackPanel></Border>
+        </Grid>
+        <Border Grid.Row="3" Classes="card">
+            <StackPanel Spacing="10">
+                <TextBlock Text="Verdict" FontWeight="SemiBold" Foreground="#8793A8" />
+                <TextBlock Text="{Binding VerdictLabel}" FontSize="26" FontWeight="SemiBold" Foreground="#17C666" />
+                <TextBlock Text="{Binding VerdictExplanation}" Foreground="#E6ECF5" TextWrapping="Wrap" />
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

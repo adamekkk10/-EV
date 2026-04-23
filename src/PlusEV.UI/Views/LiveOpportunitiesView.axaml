@@ -1,0 +1,59 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:PlusEV.UI.ViewModels"
+             x:Class="PlusEV.UI.Views.LiveOpportunitiesView"
+             x:DataType="vm:LiveOpportunitiesViewModel"
+             Padding="20">
+    <Grid RowDefinitions="Auto,Auto,*">
+
+        <TextBlock Grid.Row="0" Text="Live +EV opportunities" FontSize="22" FontWeight="SemiBold"
+                   Foreground="#E6ECF5" Margin="0,0,0,12" />
+
+        <Border Grid.Row="1" Classes="card" Margin="0,0,0,12">
+            <StackPanel Orientation="Horizontal" Spacing="18">
+                <StackPanel>
+                    <TextBlock Classes="metric-caption" Text="Min EV %" />
+                    <Slider Width="160" Minimum="0" Maximum="10" Value="{Binding MinEvPercent}" TickFrequency="0.5" />
+                    <TextBlock Text="{Binding MinEvPercent, StringFormat='{}{0:F1}%'}" Foreground="#E6ECF5" />
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock Classes="metric-caption" Text="Min confidence" />
+                    <Slider Width="160" Minimum="0" Maximum="100" Value="{Binding MinConfidence}" />
+                    <TextBlock Text="{Binding MinConfidence, StringFormat='{}{0:F0}'}" Foreground="#E6ECF5" />
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock Classes="metric-caption" Text="Sport filter" />
+                    <TextBox Width="140" Text="{Binding SportFilter}" Watermark="all" />
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock Classes="metric-caption" Text="Book filter" />
+                    <TextBox Width="140" Text="{Binding BookFilter}" Watermark="all" />
+                </StackPanel>
+                <StackPanel VerticalAlignment="Center">
+                    <CheckBox Content="Auto refresh 60s" IsChecked="{Binding AutoRefresh}" />
+                    <Button Classes="primary" Content="Refresh now" Command="{Binding RefreshCommand}" Margin="0,4,0,0" />
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+        <DataGrid Grid.Row="2" ItemsSource="{Binding Visible}" IsReadOnly="True"
+                  Background="#141821" HeadersVisibility="Column" GridLinesVisibility="Horizontal"
+                  BorderBrush="#2C3444" BorderThickness="1" CornerRadius="6">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Sport"     Binding="{Binding Sport.Title}" />
+                <DataGridTextColumn Header="Event"     Binding="{Binding EventLabel}" Width="2*" />
+                <DataGridTextColumn Header="Market"    Binding="{Binding Market}" />
+                <DataGridTextColumn Header="Selection" Binding="{Binding Selection}" Width="1.2*" />
+                <DataGridTextColumn Header="Book"      Binding="{Binding Book.Title}" />
+                <DataGridTextColumn Header="American"  Binding="{Binding OfferedAmericanOdds}" />
+                <DataGridTextColumn Header="Decimal"   Binding="{Binding OfferedDecimalOdds, StringFormat='{}{0:F2}'}" />
+                <DataGridTextColumn Header="True %"    Binding="{Binding TrueProbability, StringFormat='{}{0:P1}'}" />
+                <DataGridTextColumn Header="EV %"      Binding="{Binding EvPercent, StringFormat='{}{0:P2}'}" />
+                <DataGridTextColumn Header="Conf"      Binding="{Binding Confidence, StringFormat='{}{0:F0}'}" />
+                <DataGridTextColumn Header="Stake"     Binding="{Binding RecommendedStake, StringFormat='$ {0:F2}'}" />
+                <DataGridTextColumn Header="Kelly"     Binding="{Binding KellyFraction, StringFormat='{}{0:P1}'}" />
+                <DataGridTextColumn Header="Starts"    Binding="{Binding EventStart, StringFormat='{}{0:g}'}" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

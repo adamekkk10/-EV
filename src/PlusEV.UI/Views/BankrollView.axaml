@@ -1,0 +1,50 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:PlusEV.UI.ViewModels"
+             x:Class="PlusEV.UI.Views.BankrollView"
+             x:DataType="vm:BankrollViewModel"
+             Padding="20">
+    <Grid RowDefinitions="Auto,Auto,Auto,*" RowSpacing="12">
+        <TextBlock Grid.Row="0" Text="Bankroll" FontSize="22" FontWeight="SemiBold" Foreground="#E6ECF5" />
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Spacing="10">
+            <ComboBox SelectedItem="{Binding SelectedMode}">
+                <ComboBoxItem>Live</ComboBoxItem>
+                <ComboBoxItem>Demo</ComboBoxItem>
+            </ComboBox>
+            <Button Classes="primary" Content="Load" Command="{Binding LoadCommand}" />
+        </StackPanel>
+        <Grid Grid.Row="2" ColumnDefinitions="*,*,*,*,*" ColumnSpacing="12">
+            <Border Grid.Column="0" Classes="card"><StackPanel>
+                <TextBlock Classes="metric-caption" Text="Current bankroll" />
+                <TextBlock Classes="metric" Text="{Binding CurrentBalance, StringFormat='$ {0:F2}'}" />
+            </StackPanel></Border>
+            <Border Grid.Column="1" Classes="card"><StackPanel>
+                <TextBlock Classes="metric-caption" Text="Total profit" />
+                <TextBlock Classes="metric" Text="{Binding TotalProfit, StringFormat='$ {0:F2}'}" />
+            </StackPanel></Border>
+            <Border Grid.Column="2" Classes="card"><StackPanel>
+                <TextBlock Classes="metric-caption" Text="ROI %" />
+                <TextBlock Classes="metric" Text="{Binding RoiPercent, StringFormat='{}{0:F2}%'}" />
+            </StackPanel></Border>
+            <Border Grid.Column="3" Classes="card"><StackPanel>
+                <TextBlock Classes="metric-caption" Text="Hit rate" />
+                <TextBlock Classes="metric" Text="{Binding HitRate, StringFormat='{}{0:P1}'}" />
+            </StackPanel></Border>
+            <Border Grid.Column="4" Classes="card"><StackPanel>
+                <TextBlock Classes="metric-caption" Text="Avg CLV (featured)" />
+                <TextBlock Classes="metric" Foreground="#17C666"
+                           Text="{Binding AverageClv, StringFormat='{}{0:P2}'}" />
+            </StackPanel></Border>
+        </Grid>
+        <DataGrid Grid.Row="3" ItemsSource="{Binding Entries}" IsReadOnly="True"
+                  Background="#141821" BorderBrush="#2C3444" BorderThickness="1" CornerRadius="6">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="At"      Binding="{Binding OccurredAt, StringFormat='{}{0:g}'}" />
+                <DataGridTextColumn Header="Kind"    Binding="{Binding Kind}" />
+                <DataGridTextColumn Header="Amount"  Binding="{Binding Amount, StringFormat='$ {0:F2}'}" />
+                <DataGridTextColumn Header="Balance" Binding="{Binding BalanceAfter, StringFormat='$ {0:F2}'}" />
+                <DataGridTextColumn Header="Note"    Binding="{Binding Note}" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

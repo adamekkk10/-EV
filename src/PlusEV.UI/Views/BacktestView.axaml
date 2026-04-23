@@ -1,0 +1,94 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:PlusEV.UI.ViewModels"
+             x:Class="PlusEV.UI.Views.BacktestView"
+             x:DataType="vm:BacktestViewModel"
+             Padding="20">
+    <ScrollViewer>
+        <StackPanel Spacing="12">
+            <TextBlock Text="Backtesting (walk-forward enforced)" FontSize="22" FontWeight="SemiBold"
+                       Foreground="#E6ECF5" />
+
+            <Border Classes="card">
+                <Grid ColumnDefinitions="*,*,*,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto"
+                      ColumnSpacing="14" RowSpacing="10">
+
+                    <TextBlock Grid.Row="0" Grid.Column="0" Classes="metric-caption" Text="In-sample start" />
+                    <TextBlock Grid.Row="0" Grid.Column="1" Classes="metric-caption" Text="In-sample end" />
+                    <TextBlock Grid.Row="0" Grid.Column="2" Classes="metric-caption" Text="Out-of-sample start" />
+                    <TextBlock Grid.Row="0" Grid.Column="3" Classes="metric-caption" Text="Out-of-sample end" />
+
+                    <DatePicker Grid.Row="1" Grid.Column="0" SelectedDate="{Binding InSampleStart}" />
+                    <DatePicker Grid.Row="1" Grid.Column="1" SelectedDate="{Binding InSampleEnd}" />
+                    <DatePicker Grid.Row="1" Grid.Column="2" SelectedDate="{Binding OutOfSampleStart}" />
+                    <DatePicker Grid.Row="1" Grid.Column="3" SelectedDate="{Binding OutOfSampleEnd}" />
+
+                    <TextBlock Grid.Row="2" Grid.Column="0" Classes="metric-caption" Text="Min EV %" />
+                    <TextBlock Grid.Row="2" Grid.Column="1" Classes="metric-caption" Text="Kelly fraction" />
+                    <TextBlock Grid.Row="2" Grid.Column="2" Classes="metric-caption" Text="Starting bankroll" />
+                    <TextBlock Grid.Row="2" Grid.Column="3" Classes="metric-caption" Text="Devigging method" />
+
+                    <NumericUpDown Grid.Row="3" Grid.Column="0" Minimum="0" Maximum="30" Increment="0.1" Value="{Binding MinEvPercent}" />
+                    <NumericUpDown Grid.Row="3" Grid.Column="1" Minimum="0" Maximum="1" Increment="0.05" Value="{Binding KellyFraction}" />
+                    <NumericUpDown Grid.Row="3" Grid.Column="2" Minimum="1" Maximum="1000000" Value="{Binding StartingBankroll}" />
+                    <ComboBox Grid.Row="3" Grid.Column="3" SelectedItem="{Binding DevigMethodKey}">
+                        <ComboBoxItem>multiplicative</ComboBoxItem>
+                        <ComboBoxItem>power</ComboBoxItem>
+                        <ComboBoxItem>shin</ComboBoxItem>
+                    </ComboBox>
+
+                    <StackPanel Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal" Spacing="10">
+                        <TextBlock VerticalAlignment="Center" Text="Historical CSV path" Foreground="#8793A8" />
+                        <TextBox Width="400" Text="{Binding HistoricalCsvPath}" Watermark="samples/historical-odds.csv" />
+                    </StackPanel>
+                    <Button Grid.Row="4" Grid.Column="3" Classes="primary" Content="Run backtest"
+                            Command="{Binding RunCommand}" IsEnabled="{Binding CanRun}" />
+                </Grid>
+            </Border>
+
+            <Border Classes="card">
+                <StackPanel Spacing="8">
+                    <TextBlock Text="{Binding ProgressText}" Foreground="#E6ECF5" />
+                    <ProgressBar Minimum="0" Maximum="100" Value="{Binding ProgressValue}" />
+                </StackPanel>
+            </Border>
+
+            <Border Classes="card" IsVisible="{Binding Report, Converter={x:Static ObjectConverters.IsNotNull}}">
+                <StackPanel Spacing="12">
+                    <TextBlock Text="Results" FontWeight="SemiBold" FontSize="16" Foreground="#E6ECF5" />
+
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="14">
+                        <Border Grid.Column="0" Background="#22293B" Padding="12" CornerRadius="6">
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="In-sample" FontWeight="SemiBold" Foreground="#8793A8" />
+                                <TextBlock Text="{Binding Report.InSample.RoiPercent, StringFormat='ROI {0:F2}%'}" Foreground="#E6ECF5" FontSize="20" FontWeight="SemiBold" />
+                                <TextBlock Text="{Binding Report.InSample.TotalBets, StringFormat='Bets: {0}'}" />
+                                <TextBlock Text="{Binding Report.InSample.WinRate, StringFormat='Win rate: {0:P1}'}" />
+                                <TextBlock Text="{Binding Report.InSample.AverageClv, StringFormat='Avg CLV: {0:P2}'}" />
+                                <TextBlock Text="{Binding Report.InSample.MaxDrawdown, StringFormat='Max DD: $ {0:F2}'}" />
+                                <TextBlock Text="{Binding Report.InSample.SharpeRatio, StringFormat='Sharpe: {0:F2}'}" />
+                            </StackPanel>
+                        </Border>
+                        <Border Grid.Column="1" Background="#22293B" Padding="12" CornerRadius="6">
+                            <StackPanel Spacing="4">
+                                <TextBlock Text="Out-of-sample" FontWeight="SemiBold" Foreground="#8793A8" />
+                                <TextBlock Text="{Binding Report.OutOfSample.RoiPercent, StringFormat='ROI {0:F2}%'}" Foreground="#E6ECF5" FontSize="20" FontWeight="SemiBold" />
+                                <TextBlock Text="{Binding Report.OutOfSample.TotalBets, StringFormat='Bets: {0}'}" />
+                                <TextBlock Text="{Binding Report.OutOfSample.WinRate, StringFormat='Win rate: {0:P1}'}" />
+                                <TextBlock Text="{Binding Report.OutOfSample.AverageClv, StringFormat='Avg CLV: {0:P2}'}" />
+                                <TextBlock Text="{Binding Report.OutOfSample.MaxDrawdown, StringFormat='Max DD: $ {0:F2}'}" />
+                                <TextBlock Text="{Binding Report.OutOfSample.SharpeRatio, StringFormat='Sharpe: {0:F2}'}" />
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+
+                    <Border Background="#4A1D28" Padding="12" CornerRadius="6"
+                            IsVisible="{Binding Report.OverfittingWarning}">
+                        <TextBlock Foreground="#FFB3B3" FontWeight="SemiBold"
+                                   Text="{Binding Report.OverfittingGap, StringFormat='⚠ Overfitting warning — in-sample outperforms by {0:F2} percentage points'}" />
+                    </Border>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

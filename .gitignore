@@ -1,0 +1,31 @@
+## .NET
+bin/
+obj/
+out/
+publish/
+*.user
+*.suo
+.vs/
+.vscode/
+*.pdb
+
+## Rider / Visual Studio
+.idea/
+*.DotSettings.user
+
+## OS
+.DS_Store
+Thumbs.db
+
+## Databases
+*.db
+*.db-shm
+*.db-wal
+
+## Logs
+logs/
+*.log
+
+## Local overrides
+appsettings.override.json
+appsettings.Development.json

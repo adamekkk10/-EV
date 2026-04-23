@@ -1,0 +1,33 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:PlusEV.UI.ViewModels"
+             x:Class="PlusEV.UI.Views.BetTrackerView"
+             x:DataType="vm:BetTrackerViewModel"
+             Padding="20">
+    <Grid RowDefinitions="Auto,Auto,*" RowSpacing="12">
+        <TextBlock Grid.Row="0" Text="Bet tracker" FontSize="22" FontWeight="SemiBold" Foreground="#E6ECF5" />
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Spacing="10">
+            <ComboBox SelectedItem="{Binding SelectedMode}">
+                <ComboBoxItem>Live</ComboBoxItem>
+                <ComboBoxItem>Demo</ComboBoxItem>
+                <ComboBoxItem>Backtest</ComboBoxItem>
+            </ComboBox>
+            <Button Content="Load" Classes="primary" Command="{Binding LoadCommand}" />
+        </StackPanel>
+        <DataGrid Grid.Row="2" ItemsSource="{Binding Bets}" IsReadOnly="True"
+                  Background="#141821" BorderBrush="#2C3444" BorderThickness="1" CornerRadius="6">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Placed"    Binding="{Binding PlacedAt, StringFormat='{}{0:g}'}" />
+                <DataGridTextColumn Header="Event"     Binding="{Binding EventLabel}" Width="2*" />
+                <DataGridTextColumn Header="Market"    Binding="{Binding Market}" />
+                <DataGridTextColumn Header="Selection" Binding="{Binding Selection}" />
+                <DataGridTextColumn Header="Book"      Binding="{Binding BookTitle}" />
+                <DataGridTextColumn Header="American"  Binding="{Binding AmericanOdds}" />
+                <DataGridTextColumn Header="Stake"     Binding="{Binding Stake, StringFormat='$ {0:F2}'}" />
+                <DataGridTextColumn Header="Result"    Binding="{Binding Result}" />
+                <DataGridTextColumn Header="P/L"       Binding="{Binding ProfitOrLoss, StringFormat='$ {0:F2}'}" />
+                <DataGridTextColumn Header="CLV"       Binding="{Binding Clv, StringFormat='{}{0:P2}'}" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

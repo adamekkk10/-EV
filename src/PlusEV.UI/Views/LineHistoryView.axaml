@@ -1,0 +1,33 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:PlusEV.UI.ViewModels"
+             x:Class="PlusEV.UI.Views.LineHistoryView"
+             x:DataType="vm:LineHistoryViewModel"
+             Padding="20">
+    <Grid RowDefinitions="Auto,Auto,Auto,*" RowSpacing="12">
+        <TextBlock Grid.Row="0" Text="Line history" FontSize="22" FontWeight="SemiBold" Foreground="#E6ECF5" />
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Spacing="10">
+            <Button Classes="primary" Content="Load events" Command="{Binding LoadEventsCommand}" />
+            <ComboBox ItemsSource="{Binding EventIds}" SelectedItem="{Binding SelectedEventId}" Width="280" />
+            <ComboBox SelectedItem="{Binding SelectedMarket}">
+                <ComboBoxItem>H2H</ComboBoxItem>
+                <ComboBoxItem>Spread</ComboBoxItem>
+                <ComboBoxItem>Total</ComboBoxItem>
+            </ComboBox>
+            <Button Content="Load points" Command="{Binding LoadPointsCommand}" />
+        </StackPanel>
+        <TextBlock Grid.Row="2" Foreground="#8793A8"
+                   Text="{Binding AverageLatencyMs, StringFormat='Average fetch latency: {0:F0} ms'}" />
+        <DataGrid Grid.Row="3" ItemsSource="{Binding Points}" IsReadOnly="True"
+                  Background="#141821" BorderBrush="#2C3444" BorderThickness="1" CornerRadius="6">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Fetched"   Binding="{Binding FetchedAt, StringFormat='{}{0:HH:mm:ss}'}" />
+                <DataGridTextColumn Header="Book"      Binding="{Binding BookKey}" />
+                <DataGridTextColumn Header="Selection" Binding="{Binding Selection}" />
+                <DataGridTextColumn Header="Point"     Binding="{Binding Point}" />
+                <DataGridTextColumn Header="Decimal"   Binding="{Binding DecimalOdds, StringFormat='{}{0:F2}'}" />
+                <DataGridTextColumn Header="Latency"   Binding="{Binding FetchLatencyMs, StringFormat='{}{0} ms'}" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

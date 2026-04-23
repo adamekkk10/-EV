@@ -1,0 +1,44 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style Selector="Window">
+        <Setter Property="Background" Value="#141821" />
+    </Style>
+
+    <Style Selector="Button.primary">
+        <Setter Property="Background" Value="#17C666" />
+        <Setter Property="Foreground" Value="#0A0E14" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Padding" Value="14,8" />
+        <Setter Property="CornerRadius" Value="6" />
+    </Style>
+    <Style Selector="Button.primary:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="#1AD672" />
+    </Style>
+    <Style Selector="Button.danger">
+        <Setter Property="Background" Value="#D4183D" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Padding" Value="14,8" />
+        <Setter Property="CornerRadius" Value="6" />
+    </Style>
+
+    <Style Selector="Border.card">
+        <Setter Property="Background" Value="#1B2130" />
+        <Setter Property="BorderBrush" Value="#2C3444" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="Padding" Value="16" />
+    </Style>
+
+    <Style Selector="TextBlock.metric">
+        <Setter Property="FontSize" Value="28" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Foreground" Value="#E6ECF5" />
+    </Style>
+
+    <Style Selector="TextBlock.metric-caption">
+        <Setter Property="FontSize" Value="11" />
+        <Setter Property="Foreground" Value="#8793A8" />
+        <Setter Property="FontWeight" Value="Normal" />
+    </Style>
+</Styles>

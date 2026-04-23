@@ -1,0 +1,36 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:PlusEV.UI.ViewModels"
+             x:Class="PlusEV.UI.Views.ArbitrageMiddleView"
+             x:DataType="vm:ArbitrageMiddleViewModel"
+             Padding="20">
+    <Grid RowDefinitions="Auto,*,Auto,*" RowSpacing="12">
+        <TextBlock Grid.Row="0" Text="Arbitrage" FontSize="20" FontWeight="SemiBold" Foreground="#E6ECF5" />
+        <DataGrid Grid.Row="1" ItemsSource="{Binding Arbitrages}" IsReadOnly="True"
+                  Background="#141821" BorderBrush="#2C3444" BorderThickness="1" CornerRadius="6">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Event"  Binding="{Binding EventLabel}" Width="2*" />
+                <DataGridTextColumn Header="Market" Binding="{Binding Market}" />
+                <DataGridTextColumn Header="Return" Binding="{Binding GuaranteedReturnPercent, StringFormat='{}{0:P2}'}" />
+                <DataGridTextColumn Header="Legs"   Binding="{Binding Legs.Count}" />
+                <DataGridTextColumn Header="Start"  Binding="{Binding EventStart, StringFormat='{}{0:g}'}" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <TextBlock Grid.Row="2" Text="Middles" FontSize="20" FontWeight="SemiBold" Foreground="#E6ECF5" />
+        <DataGrid Grid.Row="3" ItemsSource="{Binding Middles}" IsReadOnly="True"
+                  Background="#141821" BorderBrush="#2C3444" BorderThickness="1" CornerRadius="6">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Event"    Binding="{Binding EventLabel}" Width="2*" />
+                <DataGridTextColumn Header="Low"      Binding="{Binding LowSelection}" />
+                <DataGridTextColumn Header="LowPt"    Binding="{Binding LowPoint}" />
+                <DataGridTextColumn Header="LowBook"  Binding="{Binding LowBook.Title}" />
+                <DataGridTextColumn Header="High"     Binding="{Binding HighSelection}" />
+                <DataGridTextColumn Header="HighPt"   Binding="{Binding HighPoint}" />
+                <DataGridTextColumn Header="HighBook" Binding="{Binding HighBook.Title}" />
+                <DataGridTextColumn Header="Width"    Binding="{Binding MiddleWidth}" />
+                <DataGridTextColumn Header="Payout"   Binding="{Binding PayoutIfHit, StringFormat='{}{0:F2}x'}" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>
