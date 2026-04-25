@@ -9,7 +9,7 @@ public sealed record Bookmaker(string Key, string Title, bool IsSharp)
 {
     public static readonly Bookmaker Pinnacle = new("pinnacle", "Pinnacle", IsSharp: true);
     public static readonly Bookmaker Circa = new("circasports", "Circa Sports", IsSharp: true);
-    public static readonly Bookmaker Bookmaker = new("bookmaker", "Bookmaker.eu", IsSharp: true);
+    public static readonly Bookmaker BookmakerEu = new("bookmaker", "Bookmaker.eu", IsSharp: true);
     public static readonly Bookmaker DraftKings = new("draftkings", "DraftKings", IsSharp: false);
     public static readonly Bookmaker FanDuel = new("fanduel", "FanDuel", IsSharp: false);
     public static readonly Bookmaker Bet365 = new("bet365", "bet365", IsSharp: false);
@@ -19,7 +19,7 @@ public sealed record Bookmaker(string Key, string Title, bool IsSharp)
 
     public static IReadOnlyList<Bookmaker> KnownBooks { get; } = new[]
     {
-        Pinnacle, Circa, Bookmaker, DraftKings, FanDuel, Bet365, BetMGM, Caesars, PointsBet,
+        Pinnacle, Circa, BookmakerEu, DraftKings, FanDuel, Bet365, BetMGM, Caesars, PointsBet,
     };
 
     public static Bookmaker Resolve(string key) =>

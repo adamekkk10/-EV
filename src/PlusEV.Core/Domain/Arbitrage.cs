@@ -2,7 +2,7 @@ namespace PlusEV.Core.Domain;
 
 /// <summary>
 /// A pair of outcomes at different books whose combined implied probability is less
-/// than 1 &mdash; i.e. a guaranteed profit ("arb") if both sides can be taken in time.
+/// than 1 — i.e. a guaranteed profit ("arb") if both sides can be taken in time.
 /// </summary>
 public sealed class ArbitrageOpportunity
 {
