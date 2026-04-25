@@ -97,7 +97,6 @@ public class EvEngineTests
             FetchedAt = DateTimeOffset.UtcNow,
         };
         // Every other book says ~50/50.
-        var dk = pinnacle with { };
         var quotes = new List<MarketQuote> { pinnacle };
         foreach (var book in new[] { Bookmaker.DraftKings, Bookmaker.FanDuel, Bookmaker.BetMGM })
         {
