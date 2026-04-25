@@ -4,7 +4,7 @@
              x:Class="PlusEV.UI.Views.BankrollView"
              x:DataType="vm:BankrollViewModel"
              Padding="20">
-    <Grid RowDefinitions="Auto,Auto,Auto,*" RowSpacing="12">
+    <Grid RowDefinitions="Auto,Auto,Auto,*">
         <TextBlock Grid.Row="0" Text="Bankroll" FontSize="22" FontWeight="SemiBold" Foreground="#E6ECF5" />
         <StackPanel Grid.Row="1" Orientation="Horizontal" Spacing="10">
             <ComboBox SelectedItem="{Binding SelectedMode}">
@@ -13,7 +13,7 @@
             </ComboBox>
             <Button Classes="primary" Content="Load" Command="{Binding LoadCommand}" />
         </StackPanel>
-        <Grid Grid.Row="2" ColumnDefinitions="*,*,*,*,*" ColumnSpacing="12">
+        <Grid Grid.Row="2" ColumnDefinitions="*,*,*,*,*">
             <Border Grid.Column="0" Classes="card"><StackPanel>
                 <TextBlock Classes="metric-caption" Text="Current bankroll" />
                 <TextBlock Classes="metric" Text="{Binding CurrentBalance, StringFormat='$ {0:F2}'}" />
@@ -37,7 +37,7 @@
             </StackPanel></Border>
         </Grid>
         <DataGrid Grid.Row="3" ItemsSource="{Binding Entries}" IsReadOnly="True"
-                  Background="#141821" BorderBrush="#2C3444" BorderThickness="1" CornerRadius="6">
+                  Background="#141821" BorderBrush="#2C3444" BorderThickness="1">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="At"      Binding="{Binding OccurredAt, StringFormat='{}{0:g}'}" />
                 <DataGridTextColumn Header="Kind"    Binding="{Binding Kind}" />

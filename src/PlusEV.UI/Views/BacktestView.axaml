@@ -11,7 +11,7 @@
 
             <Border Classes="card">
                 <Grid ColumnDefinitions="*,*,*,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto"
-                      ColumnSpacing="14" RowSpacing="10">
+                     >
 
                     <TextBlock Grid.Row="0" Grid.Column="0" Classes="metric-caption" Text="In-sample start" />
                     <TextBlock Grid.Row="0" Grid.Column="1" Classes="metric-caption" Text="In-sample end" />
@@ -57,7 +57,7 @@
                 <StackPanel Spacing="12">
                     <TextBlock Text="Results" FontWeight="SemiBold" FontSize="16" Foreground="#E6ECF5" />
 
-                    <Grid ColumnDefinitions="*,*" ColumnSpacing="14">
+                    <Grid ColumnDefinitions="*,*">
                         <Border Grid.Column="0" Background="#22293B" Padding="12" CornerRadius="6">
                             <StackPanel Spacing="4">
                                 <TextBlock Text="In-sample" FontWeight="SemiBold" Foreground="#8793A8" />

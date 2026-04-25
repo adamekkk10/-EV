@@ -18,13 +18,15 @@ public class OddsConverterTests
     }
 
     [Theory]
-    [InlineData(1.91m, -110)]
-    [InlineData(2.00m, 100)]
-    [InlineData(2.50m, 150)]
-    [InlineData(1.50m, -200)]
-    public void DecimalToAmerican_round_trips(decimal dec, int expected)
+    [InlineData(1.91, -110)]
+    [InlineData(2.00, 100)]
+    [InlineData(2.50, 150)]
+    [InlineData(1.50, -200)]
+    public void DecimalToAmerican_round_trips(double dec, int expected)
     {
-        OddsConverter.DecimalToAmerican(dec).Should().Be(expected);
+        // decimal literals aren't allowed in attribute arguments (CS0182), so the
+        // theory passes doubles and we round-trip through decimal here.
+        OddsConverter.DecimalToAmerican((decimal)dec).Should().Be(expected);
     }
 
     [Fact]

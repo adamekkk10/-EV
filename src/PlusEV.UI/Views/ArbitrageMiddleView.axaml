@@ -4,10 +4,10 @@
              x:Class="PlusEV.UI.Views.ArbitrageMiddleView"
              x:DataType="vm:ArbitrageMiddleViewModel"
              Padding="20">
-    <Grid RowDefinitions="Auto,*,Auto,*" RowSpacing="12">
+    <Grid RowDefinitions="Auto,*,Auto,*">
         <TextBlock Grid.Row="0" Text="Arbitrage" FontSize="20" FontWeight="SemiBold" Foreground="#E6ECF5" />
         <DataGrid Grid.Row="1" ItemsSource="{Binding Arbitrages}" IsReadOnly="True"
-                  Background="#141821" BorderBrush="#2C3444" BorderThickness="1" CornerRadius="6">
+                  Background="#141821" BorderBrush="#2C3444" BorderThickness="1">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Event"  Binding="{Binding EventLabel}" Width="2*" />
                 <DataGridTextColumn Header="Market" Binding="{Binding Market}" />
@@ -19,7 +19,7 @@
 
         <TextBlock Grid.Row="2" Text="Middles" FontSize="20" FontWeight="SemiBold" Foreground="#E6ECF5" />
         <DataGrid Grid.Row="3" ItemsSource="{Binding Middles}" IsReadOnly="True"
-                  Background="#141821" BorderBrush="#2C3444" BorderThickness="1" CornerRadius="6">
+                  Background="#141821" BorderBrush="#2C3444" BorderThickness="1">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Event"    Binding="{Binding EventLabel}" Width="2*" />
                 <DataGridTextColumn Header="Low"      Binding="{Binding LowSelection}" />

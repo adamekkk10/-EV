@@ -4,11 +4,11 @@
              x:Class="PlusEV.UI.Views.DemoBotView"
              x:DataType="vm:DemoBotViewModel"
              Padding="20">
-    <Grid ColumnDefinitions="2*,*" RowDefinitions="Auto,Auto,*" ColumnSpacing="16" RowSpacing="12">
+    <Grid ColumnDefinitions="2*,*" RowDefinitions="Auto,Auto,*">
 
         <!-- Header / START/STOP -->
         <Border Grid.Row="0" Grid.ColumnSpan="2" Classes="card">
-            <Grid ColumnDefinitions="Auto,Auto,*,Auto,Auto" ColumnSpacing="14">
+            <Grid ColumnDefinitions="Auto,Auto,*,Auto,Auto">
                 <TextBlock Grid.Column="0" Text="🤖  Demo bot" FontSize="22" FontWeight="SemiBold"
                            VerticalAlignment="Center" Foreground="#E6ECF5" />
                 <Ellipse Grid.Column="1" Width="12" Height="12" Fill="#17C666" VerticalAlignment="Center"

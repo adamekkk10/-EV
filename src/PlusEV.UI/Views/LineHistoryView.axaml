@@ -4,7 +4,7 @@
              x:Class="PlusEV.UI.Views.LineHistoryView"
              x:DataType="vm:LineHistoryViewModel"
              Padding="20">
-    <Grid RowDefinitions="Auto,Auto,Auto,*" RowSpacing="12">
+    <Grid RowDefinitions="Auto,Auto,Auto,*">
         <TextBlock Grid.Row="0" Text="Line history" FontSize="22" FontWeight="SemiBold" Foreground="#E6ECF5" />
         <StackPanel Grid.Row="1" Orientation="Horizontal" Spacing="10">
             <Button Classes="primary" Content="Load events" Command="{Binding LoadEventsCommand}" />
@@ -19,7 +19,7 @@
         <TextBlock Grid.Row="2" Foreground="#8793A8"
                    Text="{Binding AverageLatencyMs, StringFormat='Average fetch latency: {0:F0} ms'}" />
         <DataGrid Grid.Row="3" ItemsSource="{Binding Points}" IsReadOnly="True"
-                  Background="#141821" BorderBrush="#2C3444" BorderThickness="1" CornerRadius="6">
+                  Background="#141821" BorderBrush="#2C3444" BorderThickness="1">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Fetched"   Binding="{Binding FetchedAt, StringFormat='{}{0:HH:mm:ss}'}" />
                 <DataGridTextColumn Header="Book"      Binding="{Binding BookKey}" />

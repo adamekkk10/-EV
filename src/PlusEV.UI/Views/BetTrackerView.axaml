@@ -4,7 +4,7 @@
              x:Class="PlusEV.UI.Views.BetTrackerView"
              x:DataType="vm:BetTrackerViewModel"
              Padding="20">
-    <Grid RowDefinitions="Auto,Auto,*" RowSpacing="12">
+    <Grid RowDefinitions="Auto,Auto,*">
         <TextBlock Grid.Row="0" Text="Bet tracker" FontSize="22" FontWeight="SemiBold" Foreground="#E6ECF5" />
         <StackPanel Grid.Row="1" Orientation="Horizontal" Spacing="10">
             <ComboBox SelectedItem="{Binding SelectedMode}">
@@ -15,7 +15,7 @@
             <Button Content="Load" Classes="primary" Command="{Binding LoadCommand}" />
         </StackPanel>
         <DataGrid Grid.Row="2" ItemsSource="{Binding Bets}" IsReadOnly="True"
-                  Background="#141821" BorderBrush="#2C3444" BorderThickness="1" CornerRadius="6">
+                  Background="#141821" BorderBrush="#2C3444" BorderThickness="1">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Placed"    Binding="{Binding PlacedAt, StringFormat='{}{0:g}'}" />
                 <DataGridTextColumn Header="Event"     Binding="{Binding EventLabel}" Width="2*" />

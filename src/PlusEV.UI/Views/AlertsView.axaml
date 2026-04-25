@@ -4,7 +4,7 @@
              x:Class="PlusEV.UI.Views.AlertsView"
              x:DataType="vm:AlertsViewModel"
              Padding="20">
-    <Grid RowDefinitions="Auto,Auto,Auto,*" RowSpacing="12">
+    <Grid RowDefinitions="Auto,Auto,Auto,*">
         <TextBlock Grid.Row="0" Text="Alerts" FontSize="22" FontWeight="SemiBold" Foreground="#E6ECF5" />
         <Border Grid.Row="1" Classes="card">
             <StackPanel Spacing="8">
@@ -27,7 +27,7 @@
             <Button Classes="primary" Content="Refresh log" Command="{Binding RefreshCommand}" />
         </StackPanel>
         <DataGrid Grid.Row="3" ItemsSource="{Binding RecentLog}" IsReadOnly="True"
-                  Background="#141821" BorderBrush="#2C3444" BorderThickness="1" CornerRadius="6">
+                  Background="#141821" BorderBrush="#2C3444" BorderThickness="1">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Sent"      Binding="{Binding SentAt, StringFormat='{}{0:g}'}" />
                 <DataGridTextColumn Header="Channel"   Binding="{Binding Channel}" />
