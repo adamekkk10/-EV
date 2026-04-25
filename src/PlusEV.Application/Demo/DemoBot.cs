@@ -71,7 +71,7 @@ public sealed class DemoBot
         var db = scope.ServiceProvider.GetRequiredService<PlusEvDbContext>();
         var bankroll = scope.ServiceProvider.GetRequiredService<BankrollService>();
 
-        var start = startingBankroll ?? _options.CurrentValue.HardCapFractionOfBankroll > 0 ? startingBankroll ?? 1000m : 1000m;
+        var start = startingBankroll ?? 1000m;
         await bankroll.EnsureInitialAsync(Mode.Demo, start, ct).ConfigureAwait(false);
 
         var session = new DemoSessionEntity
