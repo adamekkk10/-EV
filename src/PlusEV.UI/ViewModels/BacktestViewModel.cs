@@ -2,6 +2,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.DependencyInjection;
 using PlusEV.Application.Backtesting;
+using PlusEV.Core.Abstractions;
 using PlusEV.Core.Backtesting;
 using PlusEV.Core.Domain;
 using PlusEV.Infrastructure.Odds;
@@ -48,12 +49,12 @@ public sealed partial class BacktestViewModel : ViewModelBase
         OutOfSampleStart.HasValue && OutOfSampleEnd.HasValue &&
         !IsRunning && !string.IsNullOrWhiteSpace(HistoricalCsvPath);
 
-    partial void OnInSampleStartChanged(DateTimeOffset? _) => RunCommand.NotifyCanExecuteChanged();
-    partial void OnInSampleEndChanged(DateTimeOffset? _) => RunCommand.NotifyCanExecuteChanged();
-    partial void OnOutOfSampleStartChanged(DateTimeOffset? _) => RunCommand.NotifyCanExecuteChanged();
-    partial void OnOutOfSampleEndChanged(DateTimeOffset? _) => RunCommand.NotifyCanExecuteChanged();
-    partial void OnIsRunningChanged(bool _) => RunCommand.NotifyCanExecuteChanged();
-    partial void OnHistoricalCsvPathChanged(string? _) => RunCommand.NotifyCanExecuteChanged();
+    partial void OnInSampleStartChanged(DateTimeOffset? value) => RunCommand.NotifyCanExecuteChanged();
+    partial void OnInSampleEndChanged(DateTimeOffset? value) => RunCommand.NotifyCanExecuteChanged();
+    partial void OnOutOfSampleStartChanged(DateTimeOffset? value) => RunCommand.NotifyCanExecuteChanged();
+    partial void OnOutOfSampleEndChanged(DateTimeOffset? value) => RunCommand.NotifyCanExecuteChanged();
+    partial void OnIsRunningChanged(bool value) => RunCommand.NotifyCanExecuteChanged();
+    partial void OnHistoricalCsvPathChanged(string? value) => RunCommand.NotifyCanExecuteChanged();
 
     [RelayCommand(CanExecute = nameof(CanRun))]
     public async Task RunAsync()

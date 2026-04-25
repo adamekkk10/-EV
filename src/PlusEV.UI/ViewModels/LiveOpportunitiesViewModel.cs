@@ -30,10 +30,10 @@ public sealed partial class LiveOpportunitiesViewModel : ViewModelBase
 
     public ObservableCollection<EvOpportunity> Visible { get; } = new();
 
-    partial void OnMinEvPercentChanged(double _) => Refresh();
-    partial void OnMinConfidenceChanged(double _) => Refresh();
-    partial void OnSportFilterChanged(string? _) => Refresh();
-    partial void OnBookFilterChanged(string? _) => Refresh();
+    partial void OnMinEvPercentChanged(double value) => Refresh();
+    partial void OnMinConfidenceChanged(double value) => Refresh();
+    partial void OnSportFilterChanged(string? value) => Refresh();
+    partial void OnBookFilterChanged(string? value) => Refresh();
 
     [RelayCommand]
     public void Refresh()
