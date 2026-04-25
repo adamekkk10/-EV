@@ -31,7 +31,7 @@ public sealed class TheOddsApiResultProvider : IEventResultProvider
     {
         var daysFrom = System.Math.Clamp((int)(DateTimeOffset.UtcNow - since).TotalDays + 1, 1, 3);
         var response = await _client.GetScoresAsync(sport.Key, _options.ApiKey, daysFrom, ct).ConfigureAwait(false);
-        response.EnsureSuccessStatusCode();
+        await response.EnsureSuccessStatusCodeAsync().ConfigureAwait(false);
         var list = new List<EventResult>(response.Content?.Count ?? 0);
         foreach (var s in response.Content ?? new())
         {

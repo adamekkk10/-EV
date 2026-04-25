@@ -41,7 +41,7 @@ public sealed class TheOddsApiProvider : IOddsProvider
     {
         var response = await _client.GetSportsAsync(_options.ApiKey, ct).ConfigureAwait(false);
         CaptureRateLimit(response);
-        response.EnsureSuccessStatusCode();
+        await response.EnsureSuccessStatusCodeAsync().ConfigureAwait(false);
         return response.Content!
             .Where(s => s.Active)
             .Select(s => new Sport(s.Key, s.Title))
@@ -66,7 +66,7 @@ public sealed class TheOddsApiProvider : IOddsProvider
             bookmakerParam,
             ct).ConfigureAwait(false);
         CaptureRateLimit(response);
-        response.EnsureSuccessStatusCode();
+        await response.EnsureSuccessStatusCodeAsync().ConfigureAwait(false);
 
         var fetched = DateTimeOffset.UtcNow;
         var list = new List<OddsSnapshot>(response.Content?.Count ?? 0);
@@ -91,7 +91,7 @@ public sealed class TheOddsApiProvider : IOddsProvider
             at.ToString("o"),
             ct).ConfigureAwait(false);
         CaptureRateLimit(response);
-        response.EnsureSuccessStatusCode();
+        await response.EnsureSuccessStatusCodeAsync().ConfigureAwait(false);
 
         var fetched = response.Content?.Timestamp ?? at;
         var list = new List<OddsSnapshot>();
