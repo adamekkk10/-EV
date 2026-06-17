@@ -1,0 +1,95 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:PlusEV.UI.ViewModels"
+             x:Class="PlusEV.UI.Views.DemoBotView"
+             x:DataType="vm:DemoBotViewModel"
+             Padding="20">
+    <Grid ColumnDefinitions="2*,*" RowDefinitions="Auto,Auto,*">
+
+        <!-- Header / START/STOP -->
+        <Border Grid.Row="0" Grid.ColumnSpan="2" Classes="card">
+            <Grid ColumnDefinitions="Auto,Auto,*,Auto,Auto">
+                <TextBlock Grid.Column="0" Text="🤖  Demo bot" FontSize="22" FontWeight="SemiBold"
+                           VerticalAlignment="Center" Foreground="#E6ECF5" />
+                <Ellipse Grid.Column="1" Width="12" Height="12" Fill="#17C666" VerticalAlignment="Center"
+                         IsVisible="{Binding IsRunning}" />
+                <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="14" VerticalAlignment="Center" Margin="12,0,0,0">
+                    <TextBlock Classes="metric-caption" Text="Bankroll" VerticalAlignment="Center" />
+                    <TextBlock Text="{Binding CurrentBankroll, StringFormat='$ {0:F2}'}" FontSize="22"
+                               FontWeight="SemiBold" Foreground="#17C666" />
+                </StackPanel>
+                <Button Grid.Column="3" Classes="primary" Content="▶  START" Command="{Binding StartCommand}" />
+                <Button Grid.Column="4" Classes="danger"  Content="■  STOP"  Command="{Binding StopCommand}" />
+            </Grid>
+        </Border>
+
+        <!-- Bot config -->
+        <Border Grid.Row="1" Grid.ColumnSpan="2" Classes="card">
+            <StackPanel Orientation="Horizontal" Spacing="18">
+                <StackPanel>
+                    <TextBlock Classes="metric-caption" Text="Starting bankroll" />
+                    <NumericUpDown Width="120" Value="{Binding StartingBankroll}" Minimum="1" Maximum="1000000" />
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock Classes="metric-caption" Text="Aggressiveness" />
+                    <ComboBox SelectedItem="{Binding Aggressiveness}" Width="150">
+                        <ComboBoxItem>Conservative</ComboBoxItem>
+                        <ComboBoxItem>Balanced</ComboBoxItem>
+                        <ComboBoxItem>Aggressive</ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock Classes="metric-caption" Text="EV threshold %" />
+                    <NumericUpDown Width="100" Value="{Binding EvThreshold}" Minimum="0" Maximum="100" Increment="0.1" />
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock Classes="metric-caption" Text="Kelly fraction" />
+                    <NumericUpDown Width="100" Value="{Binding KellyFraction}" Minimum="0" Maximum="1" Increment="0.05" />
+                </StackPanel>
+                <Button Content="Reset demo" Command="{Binding ResetCommand}" Padding="14,8" />
+            </StackPanel>
+        </Border>
+
+        <!-- Activity feed -->
+        <Border Grid.Row="2" Grid.Column="0" Classes="card">
+            <Grid RowDefinitions="Auto,*">
+                <TextBlock Grid.Row="0" Text="Activity feed" FontWeight="SemiBold"
+                           Foreground="#E6ECF5" Margin="0,0,0,8" />
+                <ScrollViewer Grid.Row="1">
+                    <ItemsControl ItemsSource="{Binding Activity}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Spacing="10" Margin="0,4">
+                                    <TextBlock Text="{Binding At, StringFormat='{}{0:HH:mm:ss}'}"
+                                               Foreground="#8793A8" FontFamily="monospace" Width="80" />
+                                    <TextBlock Text="{Binding Text}" Foreground="#E6ECF5" TextWrapping="Wrap" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+            </Grid>
+        </Border>
+
+        <!-- Session stats -->
+        <Border Grid.Row="2" Grid.Column="1" Classes="card">
+            <StackPanel Spacing="14">
+                <TextBlock Text="Session stats" FontWeight="SemiBold" Foreground="#E6ECF5" />
+                <StackPanel>
+                    <TextBlock Classes="metric-caption" Text="Running" />
+                    <TextBlock Text="{Binding IsRunning}" Foreground="#E6ECF5" />
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock Classes="metric-caption" Text="Current bankroll" />
+                    <TextBlock Classes="metric" Text="{Binding CurrentBankroll, StringFormat='$ {0:F2}'}" />
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock Classes="metric-caption" Text="Starting bankroll" />
+                    <TextBlock Text="{Binding StartingBankroll, StringFormat='$ {0:F2}'}" Foreground="#E6ECF5" />
+                </StackPanel>
+                <TextBlock Classes="metric-caption"
+                           Text="CLV is the primary KPI — see the Reality Check view." TextWrapping="Wrap" />
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

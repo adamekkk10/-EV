@@ -1,0 +1,118 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:PlusEV.UI.ViewModels"
+        xmlns:views="using:PlusEV.UI.Views"
+        x:Class="PlusEV.UI.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Title="PlusEV — Sports betting edge finder"
+        Width="1480" Height="920"
+        MinWidth="1120" MinHeight="720"
+        Background="#0D1117">
+
+    <Grid RowDefinitions="56,*,28">
+        <!-- Top bar: brand + MODE selector -->
+        <Border Grid.Row="0" Background="#1B2130" BorderBrush="#2C3444" BorderThickness="0,0,0,1" Padding="20,8">
+            <Grid ColumnDefinitions="Auto,*,Auto">
+                <StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="10" VerticalAlignment="Center">
+                    <TextBlock Text="PlusEV" FontSize="22" FontWeight="SemiBold" Foreground="#17C666" />
+                    <Border Background="#2C3444" Padding="8,3" CornerRadius="4">
+                        <TextBlock Text="edge finder" FontSize="11" Foreground="#8793A8" VerticalAlignment="Center" />
+                    </Border>
+                </StackPanel>
+                <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="8">
+                    <Button Content="LIVE"     Command="{Binding SetModeCommand}" CommandParameter="{x:Static vm:AppMode.Live}"
+                            Background="{DynamicResource ModeLiveBrush}" Foreground="White" Padding="14,6"
+                            FontWeight="SemiBold" CornerRadius="4" />
+                    <Button Content="DEMO"     Command="{Binding SetModeCommand}" CommandParameter="{x:Static vm:AppMode.Demo}"
+                            Background="{DynamicResource ModeDemoBrush}" Foreground="White" Padding="14,6"
+                            FontWeight="SemiBold" CornerRadius="4" />
+                    <Button Content="BACKTEST" Command="{Binding SetModeCommand}" CommandParameter="{x:Static vm:AppMode.Backtest}"
+                            Background="{DynamicResource ModeBacktestBrush}" Foreground="White" Padding="14,6"
+                            FontWeight="SemiBold" CornerRadius="4" />
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Main content: sidebar + view host -->
+        <Grid Grid.Row="1" ColumnDefinitions="220,*">
+            <!-- Sidebar -->
+            <Border Grid.Column="0" Background="#111621" BorderBrush="#2C3444" BorderThickness="0,0,1,0">
+                <StackPanel Margin="8" Spacing="2">
+                    <Button Content="Live opportunities" Command="{Binding NavigateCommand}" CommandParameter="live"
+                            HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" Padding="12,10" />
+                    <Button Content="Arbitrage &amp; middles" Command="{Binding NavigateCommand}" CommandParameter="arb"
+                            HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" Padding="12,10" />
+                    <Button Content="Demo bot" Command="{Binding NavigateCommand}" CommandParameter="demo"
+                            HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" Padding="12,10" />
+                    <Button Content="Backtesting" Command="{Binding NavigateCommand}" CommandParameter="backtest"
+                            HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" Padding="12,10" />
+                    <Button Content="Bet tracker" Command="{Binding NavigateCommand}" CommandParameter="bets"
+                            HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" Padding="12,10" />
+                    <Button Content="Bankroll" Command="{Binding NavigateCommand}" CommandParameter="bankroll"
+                            HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" Padding="12,10" />
+                    <Button Content="Reality check" Command="{Binding NavigateCommand}" CommandParameter="reality"
+                            HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" Padding="12,10" />
+                    <Button Content="Line history" Command="{Binding NavigateCommand}" CommandParameter="lines"
+                            HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" Padding="12,10" />
+                    <Button Content="Alerts" Command="{Binding NavigateCommand}" CommandParameter="alerts"
+                            HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" Padding="12,10" />
+                    <Separator Margin="8,12" />
+                    <Button Content="Settings" Command="{Binding NavigateCommand}" CommandParameter="settings"
+                            HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" Padding="12,10" />
+                </StackPanel>
+            </Border>
+
+            <!-- View host -->
+            <ContentControl Grid.Column="1" Content="{Binding CurrentView}">
+                <ContentControl.DataTemplates>
+                    <DataTemplate DataType="vm:LiveOpportunitiesViewModel">
+                        <views:LiveOpportunitiesView />
+                    </DataTemplate>
+                    <DataTemplate DataType="vm:ArbitrageMiddleViewModel">
+                        <views:ArbitrageMiddleView />
+                    </DataTemplate>
+                    <DataTemplate DataType="vm:DemoBotViewModel">
+                        <views:DemoBotView />
+                    </DataTemplate>
+                    <DataTemplate DataType="vm:BacktestViewModel">
+                        <views:BacktestView />
+                    </DataTemplate>
+                    <DataTemplate DataType="vm:BetTrackerViewModel">
+                        <views:BetTrackerView />
+                    </DataTemplate>
+                    <DataTemplate DataType="vm:BankrollViewModel">
+                        <views:BankrollView />
+                    </DataTemplate>
+                    <DataTemplate DataType="vm:RealityCheckViewModel">
+                        <views:RealityCheckView />
+                    </DataTemplate>
+                    <DataTemplate DataType="vm:LineHistoryViewModel">
+                        <views:LineHistoryView />
+                    </DataTemplate>
+                    <DataTemplate DataType="vm:AlertsViewModel">
+                        <views:AlertsView />
+                    </DataTemplate>
+                    <DataTemplate DataType="vm:SettingsViewModel">
+                        <views:SettingsView />
+                    </DataTemplate>
+                </ContentControl.DataTemplates>
+            </ContentControl>
+        </Grid>
+
+        <!-- Status bar -->
+        <Border Grid.Row="2" Background="#111621" BorderBrush="#2C3444" BorderThickness="0,1,0,0">
+            <Grid ColumnDefinitions="Auto,Auto,Auto,Auto,*,Auto" Margin="12,0">
+                <TextBlock Grid.Column="0" Text="{Binding StatusBar.CurrentModeLabel, StringFormat='Mode: {0}'}"
+                           VerticalAlignment="Center" Margin="0,0,16,0" Foreground="#8793A8" />
+                <TextBlock Grid.Column="1" Text="{Binding StatusBar.ApiRemaining, StringFormat='API left: {0}'}"
+                           VerticalAlignment="Center" Margin="0,0,16,0" Foreground="#8793A8" />
+                <TextBlock Grid.Column="2" Text="{Binding StatusBar.LastRefresh, StringFormat='Last: {0}'}"
+                           VerticalAlignment="Center" Margin="0,0,16,0" Foreground="#8793A8" />
+                <TextBlock Grid.Column="3" Text="{Binding StatusBar.AverageFetchLatencyMs, StringFormat='Latency: {0:F0} ms'}"
+                           VerticalAlignment="Center" Margin="0,0,16,0" Foreground="#8793A8" />
+                <TextBlock Grid.Column="5" Text="{Binding StatusBar.Connection}"
+                           VerticalAlignment="Center" Foreground="#17C666" />
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

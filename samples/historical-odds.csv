@@ -1,0 +1,33 @@
+fetched_at,event_id,sport,commence,home,away,book,market,selection,point,decimal_odds,book_updated_at
+2025-11-01T20:00:00Z,e-0001,basketball_nba,2025-11-02T00:00:00Z,Los Angeles Lakers,Boston Celtics,pinnacle,h2h,Los Angeles Lakers,,2.05,2025-11-01T19:58:00Z
+2025-11-01T20:00:00Z,e-0001,basketball_nba,2025-11-02T00:00:00Z,Los Angeles Lakers,Boston Celtics,pinnacle,h2h,Boston Celtics,,1.88,2025-11-01T19:58:00Z
+2025-11-01T20:00:00Z,e-0001,basketball_nba,2025-11-02T00:00:00Z,Los Angeles Lakers,Boston Celtics,draftkings,h2h,Los Angeles Lakers,,2.20,2025-11-01T19:59:00Z
+2025-11-01T20:00:00Z,e-0001,basketball_nba,2025-11-02T00:00:00Z,Los Angeles Lakers,Boston Celtics,draftkings,h2h,Boston Celtics,,1.75,2025-11-01T19:59:00Z
+2025-11-01T20:00:00Z,e-0001,basketball_nba,2025-11-02T00:00:00Z,Los Angeles Lakers,Boston Celtics,fanduel,h2h,Los Angeles Lakers,,2.10,2025-11-01T19:59:30Z
+2025-11-01T20:00:00Z,e-0001,basketball_nba,2025-11-02T00:00:00Z,Los Angeles Lakers,Boston Celtics,fanduel,h2h,Boston Celtics,,1.80,2025-11-01T19:59:30Z
+2025-11-01T20:00:00Z,e-0001,basketball_nba,2025-11-02T00:00:00Z,Los Angeles Lakers,Boston Celtics,betmgm,h2h,Los Angeles Lakers,,2.05,2025-11-01T19:58:00Z
+2025-11-01T20:00:00Z,e-0001,basketball_nba,2025-11-02T00:00:00Z,Los Angeles Lakers,Boston Celtics,betmgm,h2h,Boston Celtics,,1.82,2025-11-01T19:58:00Z
+2025-11-01T20:00:00Z,e-0001,basketball_nba,2025-11-02T00:00:00Z,Los Angeles Lakers,Boston Celtics,pinnacle,spreads,Los Angeles Lakers,-3.5,1.95,2025-11-01T19:58:00Z
+2025-11-01T20:00:00Z,e-0001,basketball_nba,2025-11-02T00:00:00Z,Los Angeles Lakers,Boston Celtics,pinnacle,spreads,Boston Celtics,3.5,1.95,2025-11-01T19:58:00Z
+2025-11-01T20:00:00Z,e-0001,basketball_nba,2025-11-02T00:00:00Z,Los Angeles Lakers,Boston Celtics,draftkings,spreads,Los Angeles Lakers,-3.5,2.05,2025-11-01T19:59:00Z
+2025-11-01T20:00:00Z,e-0001,basketball_nba,2025-11-02T00:00:00Z,Los Angeles Lakers,Boston Celtics,draftkings,spreads,Boston Celtics,4.5,1.91,2025-11-01T19:59:00Z
+2025-11-01T20:00:00Z,e-0001,basketball_nba,2025-11-02T00:00:00Z,Los Angeles Lakers,Boston Celtics,pinnacle,totals,Over,220.5,1.92,2025-11-01T19:58:00Z
+2025-11-01T20:00:00Z,e-0001,basketball_nba,2025-11-02T00:00:00Z,Los Angeles Lakers,Boston Celtics,pinnacle,totals,Under,220.5,1.92,2025-11-01T19:58:00Z
+2025-11-01T20:00:00Z,e-0001,basketball_nba,2025-11-02T00:00:00Z,Los Angeles Lakers,Boston Celtics,fanduel,totals,Over,221.5,1.95,2025-11-01T19:59:30Z
+2025-11-01T20:00:00Z,e-0001,basketball_nba,2025-11-02T00:00:00Z,Los Angeles Lakers,Boston Celtics,fanduel,totals,Under,221.5,1.87,2025-11-01T19:59:30Z
+2025-11-03T18:00:00Z,e-0002,basketball_nba,2025-11-03T22:00:00Z,Golden State Warriors,Phoenix Suns,pinnacle,h2h,Golden State Warriors,,1.67,2025-11-03T17:58:00Z
+2025-11-03T18:00:00Z,e-0002,basketball_nba,2025-11-03T22:00:00Z,Golden State Warriors,Phoenix Suns,pinnacle,h2h,Phoenix Suns,,2.35,2025-11-03T17:58:00Z
+2025-11-03T18:00:00Z,e-0002,basketball_nba,2025-11-03T22:00:00Z,Golden State Warriors,Phoenix Suns,draftkings,h2h,Golden State Warriors,,1.62,2025-11-03T17:59:00Z
+2025-11-03T18:00:00Z,e-0002,basketball_nba,2025-11-03T22:00:00Z,Golden State Warriors,Phoenix Suns,draftkings,h2h,Phoenix Suns,,2.50,2025-11-03T17:59:00Z
+2025-11-03T18:00:00Z,e-0002,basketball_nba,2025-11-03T22:00:00Z,Golden State Warriors,Phoenix Suns,fanduel,h2h,Golden State Warriors,,1.65,2025-11-03T17:59:30Z
+2025-11-03T18:00:00Z,e-0002,basketball_nba,2025-11-03T22:00:00Z,Golden State Warriors,Phoenix Suns,fanduel,h2h,Phoenix Suns,,2.40,2025-11-03T17:59:30Z
+2025-11-03T18:00:00Z,e-0002,basketball_nba,2025-11-03T22:00:00Z,Golden State Warriors,Phoenix Suns,betmgm,h2h,Golden State Warriors,,1.68,2025-11-03T17:58:00Z
+2025-11-03T18:00:00Z,e-0002,basketball_nba,2025-11-03T22:00:00Z,Golden State Warriors,Phoenix Suns,betmgm,h2h,Phoenix Suns,,2.30,2025-11-03T17:58:00Z
+2025-11-05T19:00:00Z,e-0003,americanfootball_nfl,2025-11-09T18:00:00Z,Buffalo Bills,New York Jets,pinnacle,h2h,Buffalo Bills,,1.43,2025-11-05T18:58:00Z
+2025-11-05T19:00:00Z,e-0003,americanfootball_nfl,2025-11-09T18:00:00Z,Buffalo Bills,New York Jets,pinnacle,h2h,New York Jets,,3.00,2025-11-05T18:58:00Z
+2025-11-05T19:00:00Z,e-0003,americanfootball_nfl,2025-11-09T18:00:00Z,Buffalo Bills,New York Jets,draftkings,h2h,Buffalo Bills,,1.40,2025-11-05T18:59:00Z
+2025-11-05T19:00:00Z,e-0003,americanfootball_nfl,2025-11-09T18:00:00Z,Buffalo Bills,New York Jets,draftkings,h2h,New York Jets,,3.25,2025-11-05T18:59:00Z
+2025-11-05T19:00:00Z,e-0003,americanfootball_nfl,2025-11-09T18:00:00Z,Buffalo Bills,New York Jets,fanduel,h2h,Buffalo Bills,,1.42,2025-11-05T18:59:30Z
+2025-11-05T19:00:00Z,e-0003,americanfootball_nfl,2025-11-09T18:00:00Z,Buffalo Bills,New York Jets,fanduel,h2h,New York Jets,,3.10,2025-11-05T18:59:30Z
+2025-11-05T19:00:00Z,e-0003,americanfootball_nfl,2025-11-09T18:00:00Z,Buffalo Bills,New York Jets,betmgm,h2h,Buffalo Bills,,1.44,2025-11-05T18:58:00Z
+2025-11-05T19:00:00Z,e-0003,americanfootball_nfl,2025-11-09T18:00:00Z,Buffalo Bills,New York Jets,betmgm,h2h,New York Jets,,2.95,2025-11-05T18:58:00Z

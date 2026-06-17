@@ -1,0 +1,21 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="PlusEV.UI.App"
+             xmlns:local="using:PlusEV.UI"
+             RequestedThemeVariant="Dark">
+    <Application.Styles>
+        <FluentTheme />
+        <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Fluent.xaml" />
+        <StyleInclude Source="/Styles/PlusEvTheme.axaml" />
+    </Application.Styles>
+    <Application.Resources>
+        <ResourceDictionary>
+            <SolidColorBrush x:Key="ModeLiveBrush" Color="#2BB673" />
+            <SolidColorBrush x:Key="ModeDemoBrush" Color="#4A90E2" />
+            <SolidColorBrush x:Key="ModeBacktestBrush" Color="#9B59B6" />
+            <SolidColorBrush x:Key="EvLowBrush" Color="#234D36" />
+            <SolidColorBrush x:Key="EvMidBrush" Color="#2E8B57" />
+            <SolidColorBrush x:Key="EvHighBrush" Color="#17C666" />
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
